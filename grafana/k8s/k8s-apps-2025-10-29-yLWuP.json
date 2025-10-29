@@ -105,7 +105,7 @@
           "tooltip": {
             "hideZeros": false,
             "mode": "multi",
-            "sort": "none"
+            "sort": "desc"
           }
         },
         "pluginVersion": "12.2.0",
