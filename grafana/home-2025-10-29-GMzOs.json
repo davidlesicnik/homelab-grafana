@@ -123,6 +123,7 @@
           }
         ],
         "title": "Power Monitors",
+        "transparent": true,
         "type": "timeseries"
       }
     ],
