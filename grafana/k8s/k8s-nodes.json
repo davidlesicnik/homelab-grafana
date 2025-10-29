@@ -86,7 +86,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) \r\nmachine_memory_bytes{instance=~\"$instance\"} * 100",
+            "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) \r\nmachine_memory_bytes * 100",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -211,6 +211,8 @@
               }
             },
             "mappings": [],
+            "max": 100,
+            "min": 0,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -244,7 +246,7 @@
           },
           "tooltip": {
             "hideZeros": false,
-            "mode": "single",
+            "mode": "multi",
             "sort": "none"
           }
         },
@@ -256,7 +258,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) \r\nmachine_memory_bytes * 100",
+            "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) \r\nmachine_memory_bytes{instance=~\"$node\"} * 100",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -275,8 +277,8 @@
         {
           "allValue": ".+",
           "current": {
-            "text": "All",
-            "value": "$__all"
+            "text": "talos-m1",
+            "value": "talos-m1"
           },
           "definition": "label_values(kube_node_info,node)",
           "includeAll": true,
