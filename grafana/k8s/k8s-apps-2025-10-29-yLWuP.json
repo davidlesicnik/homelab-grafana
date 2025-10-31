@@ -116,7 +116,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "sum by (pod, namespace) (container_memory_working_set_bytes{pod!=\"\", namespace=~\"$namespace\"})",
+            "expr": "sum by (pod, namespace) (container_memory_working_set_bytes{pod!=\"\", namespace=~\"$namespace\", instance=~\"$node\"})",
             "legendFormat": "{{pod}}",
             "range": true,
             "refId": "A"
@@ -132,23 +132,46 @@
     "templating": {
       "list": [
         {
+          "allValue": "",
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "definition": "label_values(kube_pod_info,namespace)",
+          "includeAll": true,
+          "label": "Namepsace",
+          "multi": true,
+          "name": "namespace",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(kube_pod_info,namespace)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "^(?!kube-|.*-system|cert-manager|ingress-nginx|vault|external-secrets|eso|argocd|nfs-provisioner|kubelet-serving-cert-approver).*",
+          "type": "query"
+        },
+        {
           "allValue": ".+",
           "current": {
             "text": "All",
             "value": "$__all"
           },
-          "definition": "label_values(kube_pod_info{namespace!~\"kube-system|vault|external-secrets|ingress-nginx|kubelet-serving-cert-approver|metallb-system|nfs-provisioner|longhorn-system|cert-manager\"},namespace)",
+          "definition": "label_values(kube_node_info,node)",
           "includeAll": true,
-          "label": "Namepsace",
-          "name": "namespace",
+          "label": "Node",
+          "name": "node",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(kube_pod_info{namespace!~\"kube-system|vault|external-secrets|ingress-nginx|kubelet-serving-cert-approver|metallb-system|nfs-provisioner|longhorn-system|cert-manager\"},namespace)",
+            "query": "label_values(kube_node_info,node)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
-          "regex": "^(?!kube-|.*-system|cert-manager|ingress-nginx|vault|external-secrets|eso|argocd|nfs-provisioner).*",
+          "regex": "",
           "type": "query"
         }
       ]
