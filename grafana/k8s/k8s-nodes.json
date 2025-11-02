@@ -158,9 +158,11 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
+            "exemplar": false,
             "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) group_right\r\nmachine_memory_bytes{instance=~\"$node\"} * 100",
+            "instant": true,
             "legendFormat": "{{instance}}",
-            "range": true,
+            "range": false,
             "refId": "A"
           }
         ],
