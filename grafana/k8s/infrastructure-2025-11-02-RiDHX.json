@@ -258,7 +258,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
@@ -274,7 +274,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "sum by (pod, namespace) (container_memory_working_set_bytes{pod!=\"\", namespace=~\"$namespace\", instance=~\"$node\"})",
+            "expr": "sum by (pod, namespace) (container_memory_working_set_bytes{pod!=\"\", namespace=~\"$namespace\",container!=\"\", container!=\"POD\" , instance=~\"$node\"})",
             "legendFormat": "{{pod}}",
             "range": true,
             "refId": "A"
@@ -359,7 +359,7 @@
             "calcs": [],
             "displayMode": "list",
             "placement": "bottom",
-            "showLegend": true
+            "showLegend": false
           },
           "tooltip": {
             "hideZeros": false,
