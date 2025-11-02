@@ -121,7 +121,7 @@
           ]
         },
         "gridPos": {
-          "h": 5,
+          "h": 6,
           "w": 19,
           "x": 5,
           "y": 0
@@ -206,7 +206,7 @@
             "refId": "E"
           }
         ],
-        "title": "New panel",
+        "title": "PVE Overview",
         "transformations": [
           {
             "id": "joinByField",
@@ -247,6 +247,7 @@
             }
           }
         ],
+        "transparent": true,
         "type": "table"
       }
     ],
