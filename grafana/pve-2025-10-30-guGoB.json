@@ -633,13 +633,13 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "100 - ((node_filesystem_avail_bytes{fstype!~\"tmpfs|fuse.*|overlay\", mountpoint!~\"/efi|/boot/efi|.+nfs.+\", instance=~\"$node\"} / node_filesystem_size_bytes{fstype!~\"tmpfs|fuse.*|overlay\"}) * 100)",
-            "legendFormat": "{{instance}}",
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "legendFormat": "__auto",
             "range": true,
             "refId": "A"
           }
         ],
-        "title": "CPU Usage",
+        "title": "Disk Usage",
         "transparent": true,
         "type": "timeseries"
       }
