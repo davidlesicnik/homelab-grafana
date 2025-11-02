@@ -1,0 +1,84 @@
+{
+  "apiVersion": "dashboard.grafana.app/v1beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "daf2xste1hf8xsa"
+  },
+  "spec": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations \u0026 Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [],
+    "preload": false,
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": ".+",
+          "current": {
+            "text": "argocd",
+            "value": "argocd"
+          },
+          "definition": "label_values(kube_pod_info{namespace=~\"argocd|cert-manager|dns|external-secrets|ingress-nginx|kube-system|kubelet-serving-cert-approver|longhorn-system|metallb-system|nfs-provisioner|reverse-proxy|vault\"},namespace)",
+          "includeAll": true,
+          "label": "Namespaces",
+          "name": "namespace",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(kube_pod_info{namespace=~\"argocd|cert-manager|dns|external-secrets|ingress-nginx|kube-system|kubelet-serving-cert-approver|longhorn-system|metallb-system|nfs-provisioner|reverse-proxy|vault\"},namespace)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        },
+        {
+          "allValue": ".+",
+          "current": {
+            "text": "talos-m1",
+            "value": "talos-m1"
+          },
+          "definition": "label_values(kube_node_info,node)",
+          "includeAll": true,
+          "label": "Node",
+          "name": "node",
+          "options": [],
+          "query": {
+            "qryType": 1,
+            "query": "label_values(kube_node_info,node)",
+            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "Infrastructure"
+  }
+}
