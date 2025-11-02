@@ -296,9 +296,9 @@
           {
             "editorMode": "code",
             "exemplar": false,
-            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", instance=~\"$node\"}[5m])) * 100)",
+            "expr": "100 - ((node_filesystem_avail_bytes{fstype!~\"tmpfs|fuse.*|overlay\", instance=~\"$node\", mountpoint!~\"|/boot/efi|/efi|.+nfs.+\"} / node_filesystem_size_bytes) * 100)",
             "instant": true,
-            "legendFormat": "__auto",
+            "legendFormat": "{{instance}}",
             "range": false,
             "refId": "A"
           }
