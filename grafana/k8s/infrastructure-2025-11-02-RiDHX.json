@@ -25,37 +25,194 @@
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "links": [],
-    "panels": [],
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "footer": {
+                "reducers": []
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "pod"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 361
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "node"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 100
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 18,
+          "w": 9,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "cellHeight": "sm",
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": false,
+              "displayName": "pod"
+            }
+          ]
+        },
+        "pluginVersion": "12.2.0",
+        "targets": [
+          {
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "kube_pod_info{namespace=~\"$namespace\", node=~\"$node\"}",
+            "format": "table",
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "A"
+          }
+        ],
+        "title": "Pods by Node",
+        "transformations": [
+          {
+            "id": "concatenate",
+            "options": {}
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true,
+                "Value": true,
+                "__name__": true,
+                "app_kubernetes_io_component": true,
+                "app_kubernetes_io_instance": true,
+                "app_kubernetes_io_managed_by": true,
+                "app_kubernetes_io_name": true,
+                "app_kubernetes_io_part_of": true,
+                "app_kubernetes_io_version": true,
+                "created_by_kind": true,
+                "created_by_name": true,
+                "helm_sh_chart": true,
+                "host_ip": true,
+                "host_network": true,
+                "instance": true,
+                "job": true,
+                "kubernetes_name": true,
+                "kubernetes_namespace": true,
+                "namespace": true,
+                "pod_ip": true,
+                "uid": true
+              },
+              "includeByName": {},
+              "indexByName": {
+                "Time": 0,
+                "Value": 22,
+                "__name__": 1,
+                "app_kubernetes_io_component": 2,
+                "app_kubernetes_io_instance": 3,
+                "app_kubernetes_io_managed_by": 4,
+                "app_kubernetes_io_name": 5,
+                "app_kubernetes_io_part_of": 6,
+                "app_kubernetes_io_version": 7,
+                "created_by_kind": 8,
+                "created_by_name": 9,
+                "helm_sh_chart": 10,
+                "host_ip": 11,
+                "host_network": 12,
+                "instance": 13,
+                "job": 14,
+                "kubernetes_name": 15,
+                "kubernetes_namespace": 16,
+                "namespace": 17,
+                "node": 19,
+                "pod": 18,
+                "pod_ip": 20,
+                "uid": 21
+              },
+              "renameByName": {}
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
     "preload": false,
     "schemaVersion": 42,
     "tags": [],
     "templating": {
       "list": [
         {
-          "allValue": ".+",
+          "allValue": "^(kube-.*|.*-system|cert-manager|ingress-nginx|vault|external-secrets|eso|argocd|nfs-provisioner|kubelet-serving-cert-approver|reverse-proxy|dns).*",
           "current": {
-            "text": "argocd",
-            "value": "argocd"
+            "text": "All",
+            "value": "$__all"
           },
-          "definition": "label_values(kube_pod_info{namespace=~\"argocd|cert-manager|dns|external-secrets|ingress-nginx|kube-system|kubelet-serving-cert-approver|longhorn-system|metallb-system|nfs-provisioner|reverse-proxy|vault\"},namespace)",
+          "definition": "label_values(kube_pod_info,namespace)",
           "includeAll": true,
           "label": "Namespaces",
           "name": "namespace",
           "options": [],
           "query": {
             "qryType": 1,
-            "query": "label_values(kube_pod_info{namespace=~\"argocd|cert-manager|dns|external-secrets|ingress-nginx|kube-system|kubelet-serving-cert-approver|longhorn-system|metallb-system|nfs-provisioner|reverse-proxy|vault\"},namespace)",
+            "query": "label_values(kube_pod_info,namespace)",
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
-          "regex": "",
+          "regex": "^(kube-.*|.*-system|cert-manager|ingress-nginx|vault|external-secrets|eso|argocd|nfs-provisioner|kubelet-serving-cert-approver|reverse-proxy|dns).*",
           "type": "query"
         },
         {
           "allValue": ".+",
           "current": {
-            "text": "talos-m1",
-            "value": "talos-m1"
+            "text": "All",
+            "value": "$__all"
           },
           "definition": "label_values(kube_node_info,node)",
           "includeAll": true,
