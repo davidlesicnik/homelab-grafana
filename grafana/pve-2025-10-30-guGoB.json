@@ -387,15 +387,15 @@
           },
           "tooltip": {
             "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
+            "mode": "multi",
+            "sort": "desc"
           }
         },
         "pluginVersion": "12.2.0",
         "targets": [
           {
             "editorMode": "code",
-            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", instance=~\"$node\"}[5m])) * 100)",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -485,15 +485,15 @@
           },
           "tooltip": {
             "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
+            "mode": "multi",
+            "sort": "desc"
           }
         },
         "pluginVersion": "12.2.0",
         "targets": [
           {
             "editorMode": "code",
-            "expr": "100 - ((node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100)",
+            "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$node\"} / node_memory_MemTotal_bytes) * 100)",
             "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A"
@@ -584,7 +584,7 @@
           "tooltip": {
             "hideZeros": false,
             "mode": "multi",
-            "sort": "none"
+            "sort": "desc"
           }
         },
         "pluginVersion": "12.2.0",
@@ -695,16 +695,16 @@
           },
           "tooltip": {
             "hideZeros": false,
-            "mode": "single",
-            "sort": "none"
+            "mode": "multi",
+            "sort": "desc"
           }
         },
         "pluginVersion": "12.2.0",
         "targets": [
           {
             "editorMode": "code",
-            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
-            "legendFormat": "__auto",
+            "expr": "100 - ((node_filesystem_avail_bytes{fstype!~\"tmpfs|fuse.*|overlay\", instance=~\"$node\", mountpoint!~\"|/boot/efi|/efi|.+nfs.+\"} / node_filesystem_size_bytes) * 100)",
+            "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A"
           }
