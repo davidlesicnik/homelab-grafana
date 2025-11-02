@@ -152,13 +152,58 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "(max by(instance) (node_hwmon_temp_celsius{chip=~\"platform_coretemp_0|pci0000:00_0000:00:18_3\"})) ",
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
             "format": "table",
             "hide": false,
             "instant": true,
             "legendFormat": "__auto",
             "range": false,
             "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "100 - ((node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "(max by(instance) (node_hwmon_temp_celsius{chip=~\"platform_coretemp_0|pci0000:00_0000:00:18_3\"})) ",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "PBFA97CFB590B2093"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "100 - ((node_filesystem_avail_bytes{fstype!~\"tmpfs|fuse.*|overlay\", mountpoint!~\"|/boot/efi|/efi|.+nfs.+\"} / node_filesystem_size_bytes) * 100)",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "legendFormat": "__auto",
+            "range": false,
+            "refId": "E"
           }
         ],
         "title": "New panel",
@@ -177,18 +222,27 @@
                 "Time 1": true,
                 "Time 2": true,
                 "Time 3": true,
+                "Time 4": true,
+                "Time 5": true,
                 "__name__": true,
                 "__name__ 2": true,
                 "chip": true,
+                "device": true,
+                "fstype": true,
                 "job": true,
                 "job 2": true,
+                "job 3": true,
+                "mountpoint": true,
                 "sensor": true
               },
               "includeByName": {},
               "indexByName": {},
               "renameByName": {
                 "Value #A": "Status",
-                "Value #B": "CPU Temp"
+                "Value #B": "CPU %",
+                "Value #C": "RAM %",
+                "Value #D": "CPU Temp",
+                "Value #E": "Disk %"
               }
             }
           }
