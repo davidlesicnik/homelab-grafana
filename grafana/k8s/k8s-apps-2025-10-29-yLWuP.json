@@ -501,7 +501,7 @@
             "refId": "PrometheusVariableQueryEditor-VariableQuery"
           },
           "refresh": 1,
-          "regex": "^(?!kube-|.*-system|cert-manager|ingress-nginx|vault|external-secrets|eso|argocd|nfs-provisioner|kubelet-serving-cert-approver).*",
+          "regex": "^(?!kube-|.*-system|cert-manager|ingress-nginx|vault|external-secrets|eso|argocd|nfs-provisioner|kubelet-serving-cert-approver|reverse-proxy|dns).*",
           "type": "query"
         },
         {
