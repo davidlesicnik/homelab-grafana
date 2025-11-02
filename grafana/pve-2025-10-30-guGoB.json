@@ -85,7 +85,7 @@
           {
             "editorMode": "code",
             "exemplar": false,
-            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\",instance=~\"$node\"}[5m])) * 100)",
             "instant": true,
             "legendFormat": "__auto",
             "range": false,
@@ -155,14 +155,14 @@
           {
             "editorMode": "code",
             "exemplar": false,
-            "expr": "100 - ((node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100)",
+            "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$node\"} / node_memory_MemTotal_bytes) * 100)",
             "instant": true,
             "legendFormat": "{{instance}}",
             "range": false,
             "refId": "A"
           }
         ],
-        "title": "CPU Usage",
+        "title": "RAM Usage",
         "transparent": true,
         "type": "stat"
       },
