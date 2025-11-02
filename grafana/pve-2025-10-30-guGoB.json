@@ -245,7 +245,41 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
             },
             "mappings": [],
             "max": 100,
@@ -259,7 +293,7 @@
                 },
                 {
                   "color": "red",
-                  "value": 50
+                  "value": 80
                 }
               ]
             },
@@ -268,44 +302,38 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 8,
+          "h": 4,
           "w": 6,
           "x": 18,
           "y": 0
         },
         "id": 8,
         "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "percentChangeColorMode": "standard",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
           },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "single",
+            "sort": "none"
+          }
         },
         "pluginVersion": "12.2.0",
         "targets": [
           {
             "editorMode": "code",
-            "exemplar": false,
             "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
-            "instant": true,
             "legendFormat": "__auto",
-            "range": false,
+            "range": true,
             "refId": "A"
           }
         ],
         "title": "Disk Usage",
         "transparent": true,
-        "type": "stat"
+        "type": "timeseries"
       },
       {
         "datasource": {
@@ -571,7 +599,7 @@
           "h": 8,
           "w": 8,
           "x": 16,
-          "y": 8
+          "y": 4
         },
         "id": 6,
         "options": {
