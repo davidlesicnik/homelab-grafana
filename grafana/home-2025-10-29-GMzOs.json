@@ -97,9 +97,11 @@
         "id": 1,
         "options": {
           "legend": {
-            "calcs": [],
-            "displayMode": "list",
-            "placement": "bottom",
+            "calcs": [
+              "last"
+            ],
+            "displayMode": "table",
+            "placement": "right",
             "showLegend": true
           },
           "tooltip": {
