@@ -98,7 +98,7 @@
         "options": {
           "legend": {
             "calcs": [
-              "last"
+              "mean"
             ],
             "displayMode": "table",
             "placement": "right",
