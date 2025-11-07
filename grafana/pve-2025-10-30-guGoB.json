@@ -552,8 +552,7 @@
               }
             },
             "mappings": [],
-            "max": 100,
-            "min": 20,
+            "min": 30,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -750,7 +749,7 @@
       ]
     },
     "time": {
-      "from": "now-6h",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
