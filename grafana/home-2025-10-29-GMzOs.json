@@ -102,7 +102,9 @@
             ],
             "displayMode": "table",
             "placement": "right",
-            "showLegend": true
+            "showLegend": true,
+            "sortBy": "Mean",
+            "sortDesc": true
           },
           "tooltip": {
             "hideZeros": false,
