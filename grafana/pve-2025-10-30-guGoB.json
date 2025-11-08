@@ -397,7 +397,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", instance=~\"$node\"}[5m])) * 100)",
+            "expr": "avg_over_time((100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\", instance=~\"$node\"}[5m])) * 100))[5m:1m])",
             "legendFormat": "__auto",
             "range": true,
             "refId": "A"
@@ -497,7 +497,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$node\"} / node_memory_MemTotal_bytes) * 100)",
+            "expr": "avg_over_time((100 - ((node_memory_MemAvailable_bytes{instance=~\"$node\"} / node_memory_MemTotal_bytes) * 100))[5m:1m])",
             "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A"
@@ -595,7 +595,7 @@
         "targets": [
           {
             "editorMode": "code",
-            "expr": "(max by(instance) (node_hwmon_temp_celsius{chip=\"platform_coretemp_0\", instance=~\"$node\"})) ",
+            "expr": "max by(instance) (avg_over_time(node_hwmon_temp_celsius{chip=\"platform_coretemp_0\", instance=~\"$node\"}[10m]))",
             "hide": false,
             "legendFormat": "{{instance}}",
             "range": true,
@@ -607,7 +607,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "node_hwmon_temp_celsius{instance=~\"$node\", chip=\"pci0000:00_0000:00:18_3\"}",
+            "expr": "avg_over_time(node_hwmon_temp_celsius{instance=~\"$node\", chip=\"pci0000:00_0000:00:18_3\"}[10m])",
             "hide": false,
             "instant": false,
             "legendFormat": "{{instance}}",
