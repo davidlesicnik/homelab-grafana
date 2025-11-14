@@ -87,7 +87,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "rate(container_cpu_usage_seconds_total{id=\"/\"}[5m]) \r\n/ on(instance) group_right\r\nmachine_cpu_cores{instance=~\"$node\"} * 100",
+            "expr": "sum by(kubernetes_io_hostname) (\r\n  rate(container_cpu_usage_seconds_total{id=\"/\"}[5m]) \r\n  / on(instance) group_right \r\n  machine_cpu_cores{instance=~\"$node\"} * 100\r\n)",
             "instant": true,
             "legendFormat": "{{instance}}",
             "range": false,
@@ -159,7 +159,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) group_right\r\nmachine_memory_bytes{instance=~\"$node\"} * 100",
+            "expr": "sum by(kubernetes_io_hostname)(\r\n    container_memory_working_set_bytes{id=\"/\"} \r\n    / on(instance) group_right\r\n    machine_memory_bytes{instance=~\"$node\"} * 100\r\n)",
             "instant": true,
             "legendFormat": "{{instance}}",
             "range": false,
@@ -265,7 +265,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "rate(container_cpu_usage_seconds_total{id=\"/\"}[5m]) \r\n/ on(instance) group_right \r\nmachine_cpu_cores{instance=~\"$node\"} * 100",
+            "expr": "sum by(kubernetes_io_hostname) (\r\n  rate(container_cpu_usage_seconds_total{id=\"/\"}[5m]) \r\n  / on(instance) group_right \r\n  machine_cpu_cores{instance=~\"$node\"} * 100\r\n)",
             "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A"
@@ -367,7 +367,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "container_memory_working_set_bytes{id=\"/\"} \r\n/ on(instance) group_right\r\nmachine_memory_bytes{instance=~\"$node\"} * 100",
+            "expr": "sum by(kubernetes_io_hostname)(\r\n    container_memory_working_set_bytes{id=\"/\"} \r\n    / on(instance) group_right\r\n    machine_memory_bytes{instance=~\"$node\"} * 100\r\n)",
             "legendFormat": "{{instance}}",
             "range": true,
             "refId": "A"
