@@ -570,7 +570,7 @@
               "uid": "PBFA97CFB590B2093"
             },
             "editorMode": "code",
-            "expr": "sum by (pod, namespace) (\r\n  container_memory_working_set_bytes{\r\n    pod!=\"\", \r\n    container!=\"\",\r\n    container!=\"POD\",\r\n    namespace=~\"$namespace\", \r\n    instance=~\"$node\"\r\n  }\r\n) \r\n/ \r\nsum by (pod, namespace) (\r\n  container_spec_memory_limit_bytes{\r\n    pod!=\"\", \r\n    container!=\"\",           # Add these!\r\n    container!=\"POD\",        # Add these!\r\n    namespace=~\"$namespace\", \r\n    instance=~\"$node\"\r\n  }\r\n) * 100",
+            "expr": "sum by (pod, namespace) (\r\n  container_memory_working_set_bytes{\r\n    pod!=\"\", \r\n    container!=\"\",\r\n    container!=\"POD\",\r\n    namespace=~\"$namespace\", \r\n    instance=~\"$node\"\r\n  }\r\n) \r\n/ \r\nsum by (pod, namespace) (\r\n  container_spec_memory_limit_bytes{\r\n    pod!=\"\", \r\n    container!=\"\",\r\n    container!=\"POD\",\r\n    namespace=~\"$namespace\", \r\n    instance=~\"$node\"\r\n  }\r\n) * 100",
             "legendFormat": "{{pod}}",
             "range": true,
             "refId": "A"
